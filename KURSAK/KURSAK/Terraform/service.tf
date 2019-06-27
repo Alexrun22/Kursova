@@ -1,10 +1,10 @@
 resource "azurerm_resource_group" "terra" {
-  name     = "example-resources"
+  name     = "terragroup"
   location = "West Europe"
 }
 
 resource "azurerm_app_service_plan" "terra" {
-  name                = "example-appserviceplan"
+  name                = "terra-serviceplan"
   location            = "${azurerm_resource_group.terra.location}"
   resource_group_name = "${azurerm_resource_group.terra.name}"
 
@@ -15,7 +15,7 @@ resource "azurerm_app_service_plan" "terra" {
 }
 
 resource "azurerm_app_service" "terra" {
-  name                = "example-app-service"
+  name                = "terra-app-service"
   location            = "${azurerm_resource_group.terra.location}"
   resource_group_name = "${azurerm_resource_group.terra.name}"
   app_service_plan_id = "${azurerm_app_service_plan.terra.id}"
