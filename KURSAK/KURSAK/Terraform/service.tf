@@ -1,12 +1,12 @@
-resource "azurerm_resource_group" "main" {
+resource "azurerm_resource_group" "terra" {
   name     = "${var.prefix}-resources"
   location = var.location
 }
 
-resource "azurerm_app_service_plan" "main" {
+resource "azurerm_app_service_plan" "terra" {
   name                = "${var.prefix}-asp"
-  location            = azurerm_resource_group.main.location
-  resource_group_name = azurerm_resource_group.main.name
+  location            = azurerm_resource_group.terra.location
+  resource_group_name = azurerm_resource_group.terra.name
   kind                = "Linux"
   reserved            = true
 
@@ -16,11 +16,11 @@ resource "azurerm_app_service_plan" "main" {
   }
 }
 
-resource "azurerm_app_service" "main" {
+resource "azurerm_app_service" "terra" {
   name                = "${var.prefix}-appservice"
-  location            = azurerm_resource_group.main.location
-  resource_group_name = azurerm_resource_group.main.name
-  app_service_plan_id = azurerm_app_service_plan.main.id
+  location            = azurerm_resource_group.terra.location
+  resource_group_name = azurerm_resource_group.terra.name
+  app_service_plan_id = azurerm_app_service_plan.terra.id
 
   site_config {
     app_command_line = ""
