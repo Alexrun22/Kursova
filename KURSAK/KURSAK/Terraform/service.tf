@@ -13,7 +13,7 @@ resource "azurerm_app_service_plan" "terra" {
     size = "S1"
   }
 }
-
+ 
 resource "azurerm_app_service" "terra" {
   name                = "terra-app-service"
   location            = "${azurerm_resource_group.terra.location}"
