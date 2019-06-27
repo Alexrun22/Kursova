@@ -28,7 +28,7 @@ resource "azurerm_app_service" "terra" {
   app_settings = {
     "SOME_KEY" = "some-value"
   }
-
+ 
   connection_string {
     name  = "Database"
     type  = "SQLServer"
